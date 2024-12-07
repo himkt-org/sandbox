@@ -1,0 +1,11 @@
+on:
+  pull_request:
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo "${TITLE}"
+        env:
+          TITLE: ${{ github.event.pull_request.title }}
