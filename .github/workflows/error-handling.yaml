@@ -4,14 +4,20 @@ on:
     - main
 
 jobs:
-  main:
+  group:
     runs-on: ubuntu-latest
     
     steps:
-      - run: exit 1
-      - run: echo 'should not be printed'
-      - run: echo 'should be printed'
-        if: ${{ failure() }}
-      - run: echo 'should not be printed'
-        if: ${{ success() }}
-  
+      - run: echo "::group::group name"
+      - run: echo "hoge1"
+      - run: echo "hoge2"
+      - run: echo "::endgroup::"
+      - run: echo "fuga1"
+
+  annotation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo "::error::something wrong"
+      - run: echo "::warning::caution"
+      - run: echo "::notice::information"
