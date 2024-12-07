@@ -1,0 +1,12 @@
+on:
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}.${{ github.ref }}
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: sleep 1000
