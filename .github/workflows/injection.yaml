@@ -6,6 +6,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo $TITLE
+      - run: echo "${TITLE}"
         env:
           TITLE: ${{ github.event.pull_request.title }}
