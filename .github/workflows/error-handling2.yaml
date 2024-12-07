@@ -1,0 +1,19 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: exit 1
+        continue-on-error: true
+        id: error
+      - run: |
+          echo outcome: ${OUTCOME}
+          echo conclusion: ${CONCLUSION}
+        env:
+          OUTCOME: ${{ steps.error.outcome }}
+          CONCLUSION: ${{ steps.error.conclusion }}
