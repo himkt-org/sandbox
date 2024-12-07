@@ -1,0 +1,17 @@
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - run: exit 1
+      - run: echo 'should not be printed'
+      - run: echo 'should be printed'
+        if: ${{ failure() }}
+      - run: echo 'should not be printed'
+        if: ${{ success() }}
+  
