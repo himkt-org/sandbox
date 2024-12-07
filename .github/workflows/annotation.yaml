@@ -1,0 +1,24 @@
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  group:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: |
+          echo "::group::group name"
+          echo "hoge1"
+          echo "hoge2"
+          echo "::endgroup::"
+          echo "fuga1"
+
+  annotation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo "::error::something wrong"
+      - run: echo "::warning::caution"
+      - run: echo "::notice::information"
